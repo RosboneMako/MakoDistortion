@@ -94,6 +94,7 @@ None of them were used in this application. All code was hand
 made for fun and experimentation with inspiration from the book:
 Designing Audio Effect Plugins in C++
 By Will Pirkle
+       
 https://www.amazon.com/Designing-Audio-Effect-Plugins-C/dp/1138591939
 
 Code implemented that uses ideas from the book are:
