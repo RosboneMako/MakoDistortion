@@ -26,7 +26,7 @@ the standalone EXE.
 The VST has only been successfully tested in Reaper and Cakewalk.
 
 I am not a C++ programmer. So many parts of this code could be 
-done efficiantly and easier to read if using correct C++ style.
+done efficiently and easier to read if using correct C++ style.
 
 It is presented as a simple example to get started in JUCE VST
 programming.
@@ -96,6 +96,14 @@ stream with:
 ```
 channelData[samp] = sample; 
 ```
+
+Example code to double your volume would be:
+```
+sample = buffer.getSample(channel, samp);  //Read sample.
+sample *= 2.0f;                            //Double the volume.
+channelData[samp] = sample;                //Save the new sample value.
+```
+
 JUCE has many Digital Signal Processing (DSP) abilities built in.
 None of them were used in this application. All code was hand 
 made for fun and experimentation with inspiration from the book:
