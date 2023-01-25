@@ -23,9 +23,13 @@ heavy lifting interfacing to the DAW as a VST. JUCE will also
 compile to a stand alone EXE. Program debugging is easiest in 
 the standalone EXE.
 
-The VST has only been successfully tested in Reaper.
-The VST crashes in Bandlab Cakewalk. 
+The VST has only been successfully tested in Reaper and Cakewalk.
 
+I am not a C++ programmer. So many parts of this code could be 
+done efficiantly and easier to read if using correct C++ style.
+
+It is presented as a simple example to get started in JUCE VST
+programming.
 
 VST/EXE INFORMATION
 ------------------------------------------------------------------
@@ -113,6 +117,8 @@ variables. This program uses these methods to interface to the DAW.
 
 
 1) Create a ValueStateTree in PluginProcessor.
+   
+   ```   
    juce::AudioProcessorValueTreeState parameters;
     
    parameters (*this, nullptr, "PARAMETERS",
@@ -120,26 +126,31 @@ variables. This program uses these methods to interface to the DAW.
      std::make_unique<juce::AudioParameterFloat>(  "gain",    "Gain", .01f, 1.0f, .1f),
      std::make_unique<juce::AudioParameterInt>(    "chan",    "Chan",  0, 3, 0)
    }
-            
+   ```
+   
 2) Connect your controls to the ValueStateTree in PluginEditor.
+   ```   
    makoSA_Gain = std::make_unique <juce::AudioProcessorValueTreeState::SliderAttachment> (makoProcessor.parameters, "gain", mjSlidVol);
    makoSA_Chan = std::make_unique <juce::AudioProcessorValueTreeState::SliderAttachment>(makoProcessor.parameters, "chan", mjSlidChan);
-
+   ```   
 3) Create the functions required to send the ValueTree data to 
    the DAW. Tese are in PluginEditor.cpp.
    
+   ```   
    void MakoDist01AudioProcessor::getStateInformation (juce::MemoryBlock& destData)
    {
      // You should use this method to store your parameters in the memory block.
      // You could do that either as raw data, or use the XML or ValueTree classes
      // as intermediaries to make it easy to save and load complex data.
+     
      auto state = parameters.copyState();
      std::unique_ptr<juce::XmlElement> xml(state.createXml());
      copyXmlToBinary(*xml, destData);
    }
-
+   
    void MakoDist01AudioProcessor::setStateInformation (const void* data, int sizeInBytes)
    {
+   
      // You should use this method to restore your parameters from this memory block,
      // whose contents will have been created by the getStateInformation() call.
         
@@ -150,6 +161,7 @@ variables. This program uses these methods to interface to the DAW.
             parameters.replaceState(juce::ValueTree::fromXml(*xmlState));
     
    }
+   ```   
 
 VERSION HISTORY
 ------------------------------------------------------------------
