@@ -62,7 +62,7 @@ setting, the editor can be loaded and runs in a seperate thread.
 
 GUI ELEMENTS
 ------------------------------------------------------------------
-JUCE can be used to create any type of grpahical presentation of
+JUCE can be used to create any type of graphical presentation of
 data and controls. This application only uses a few basic controls
 provided by JUCE. There are some simple bitmaps used to represent
 the signal path as it changes. 
