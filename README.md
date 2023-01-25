@@ -78,21 +78,24 @@ JUCE handles all of the interfacing with the DAW to get access to
 the incoming and outgoing audio data.
 
 The function that is constantly called to handle data is:
+```
 void MakoDist01AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
-
-This function has premade foor loops that will loop thru the data
+```
+This function has premade for loops that will loop thru the data
 channels.
 
 Read incoming data with:
+```
 sample = buffer.getSample(channel, samp); 
-
+```
 Then your code can process this incoming data sample that is 
 scaled from -1.0f to 1.0f.
 
 When processing is complete save your data to the outgoing audio
 stream with:
+```
 channelData[samp] = sample; 
-
+```
 JUCE has many Digital Signal Processing (DSP) abilities built in.
 None of them were used in this application. All code was hand 
 made for fun and experimentation with inspiration from the book:
@@ -112,7 +115,7 @@ SETUP STORAGE
 Mako Distortion is designed to be used as a VST. All setup saving
 and restoring is handled by the DAW thru the VST code.
 
-To make your setup available to the DAW you need setup up a few 
+To make your setup available to the DAW you need to setup up a few 
 variables. This program uses these methods to interface to the DAW.
 
 
