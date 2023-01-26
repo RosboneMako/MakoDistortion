@@ -78,14 +78,14 @@ JUCE handles all of the interfacing with the DAW to get access to
 the incoming and outgoing audio data.
 
 The function that is constantly called to handle data is:
-```
+```C++
 void MakoDist01AudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 ```
 This function has premade for loops that will loop thru the data
 channels.
 
 Read incoming data with:
-```
+```C++
 sample = buffer.getSample(channel, samp); 
 ```
 Then your code can process this incoming data sample that is 
@@ -93,12 +93,12 @@ scaled from -1.0f to 1.0f.
 
 When processing is complete save your data to the outgoing audio
 stream with:
-```
+```C++
 channelData[samp] = sample; 
 ```
 
 Example code to double your volume would be:
-```
+```C++
 sample = buffer.getSample(channel, samp);  //Read sample.
 sample *= 2.0f;                            //Double the volume.
 channelData[samp] = sample;                //Save the new sample value.
@@ -129,7 +129,7 @@ variables. This program uses these methods to interface to the DAW.
 
 1) Create a ValueStateTree in PluginProcessor.
    
-   ```   
+   ```C++   
    juce::AudioProcessorValueTreeState parameters;
     
    parameters (*this, nullptr, "PARAMETERS",
@@ -140,14 +140,14 @@ variables. This program uses these methods to interface to the DAW.
    ```
    
 2) Connect your controls to the ValueStateTree in PluginEditor.
-   ```   
+   ```C++   
    makoSA_Gain = std::make_unique <juce::AudioProcessorValueTreeState::SliderAttachment> (makoProcessor.parameters, "gain", mjSlidVol);
    makoSA_Chan = std::make_unique <juce::AudioProcessorValueTreeState::SliderAttachment>(makoProcessor.parameters, "chan", mjSlidChan);
    ```   
 3) Create the functions required to send the ValueTree data to 
    the DAW. Tese are in PluginEditor.cpp.
    
-   ```   
+   ```C++   
    void MakoDist01AudioProcessor::getStateInformation (juce::MemoryBlock& destData)
    {
      // You should use this method to store your parameters in the memory block.
