@@ -41,8 +41,8 @@ VST/EXE INFORMATION
 3) The VST needs to be located where your other VST files are
    located. Most DAWs will have a list of folders that it searches
    thru when starting.
-4) information of program operation can be found in the ReadMe.txt
-   file included in the ZIP file.
+4) Information of program operation can be found in the ReadMe PDF
+   included in the ZIP file.
 
 SOURCE CODE INFORMATION
 ------------------------------------------------------------------
