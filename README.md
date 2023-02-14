@@ -4,7 +4,7 @@
 * JUCE Audio Development Framework
 * https://juce.com/
 * Version: 1.0
-* Posted: January xx, 2023
+* Posted: February 5, 2023
 
 VERSION
 ------------------------------------------------------------------
