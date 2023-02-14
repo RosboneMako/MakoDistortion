@@ -34,12 +34,15 @@ programming.
 VST/EXE INFORMATION
 ------------------------------------------------------------------
 1) Download the ZIP file that the holds the VST and EXE files.
-2) The EXE can be located and run from anywhere.
+2) The EXE can be located and run from anywhere. C++ Runtime files
+   may need to be downloaded from the Microsoft site.
+   https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170
+   VS 2022 x64 Redistribution files. 
 3) The VST needs to be located where your other VST files are
-located. Most DAWs will have a list of folders that it searches
-thru when starting.
+   located. Most DAWs will have a list of folders that it searches
+   thru when starting.
 4) information of program operation can be found in the ReadMe.txt
-file included in the ZIP file.
+   file included in the ZIP file.
 
 SOURCE CODE INFORMATION
 ------------------------------------------------------------------
